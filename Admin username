@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Pure CSS Dark Mode</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .toggle-container {
+      display: none;
+    }
+
+    .container {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      background-color: aliceblue;
+      border: 2px solid black;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      grid-area: header;
+      background-color: green;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    aside {
+      grid-area: sidebar;
+      background-color: rgb(240, 234, 234);
+      padding: 20px;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      margin-bottom: 10px;
+    }
+
+    aside ul li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    aside ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      grid-area: main;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: green;
+      padding: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    #dark-toggle:checked ~ .container {
+      background-color: rgb(72, 67, 67);
+      color: white;
+    }
+
+    #dark-toggle:checked ~ .container header,
+    #dark-toggle:checked ~ .container footer {
+      background-color: rgb(126, 110, 110);
+      color: white;
+    }
+
+    #dark-toggle:checked ~ .container aside {
+      background-color: rgb(74, 56, 56);
+    }
+
+    #dark-toggle:checked ~ .container aside ul li a {
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+      }
+
+      aside {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="dark-toggle" class="toggle-container" />
+  <div class="container">
+    <header>
+      <span>Admin Dashboard</span>
+      <label for="dark-toggle" style="cursor: pointer;">Dark Mode</label>
+    </header>
+    <aside>
+      <ul>
+        <li>Home</li>
+        <li>Users</li>
+        <li>Settings</li>
+      </ul>
+    </aside>
+    <main>
+      <h2>Welcome Admin</h2>
+      <p>This is the main content area. Add charts, tables, or reports here.</p>
+    </main>
+    <footer>&copy; 2025 Admin Panel</footer>
+  </div>
+</body>
+</html>
